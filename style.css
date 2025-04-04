@@ -32,7 +32,7 @@ body{
 
 .container{
     display: grid;
-    grid-template-columns: 380px 4fr;
+    grid-template-columns: 1fr 4fr;
 }
 
 .content{
@@ -56,14 +56,16 @@ header{
     grid-column: 2 / 3;
     background-color: black;
     display: grid;
-    position: relative;
+}
+
+#searchLens{
+    width: 30px;
 }
 
 .search{
     display: grid;
     grid-template-columns: 2fr 1fr;
-    font-size: 35px;
-    padding: 15px 45px;
+    padding: 15px 35px;
 }
 
 .searchBar{
@@ -74,44 +76,48 @@ header{
 }
 
 .searchBar input{
-    width: 800px;
-    height: 40px;
+    width: 600px;
+    height: 30px;
     border-radius: 25px;
 }
 
 .notifs{
     display: grid;
-    grid-template-columns: auto 120px auto auto;
+    grid-template-columns: auto 60px auto auto;
     justify-self: end;
     align-items: center;
     list-style: none;
     font-family: "Inter Tight", sans-serif;
-    gap: 10px;
+    gap: 8px;
 }
 
-.bellIcon img{
-    width: 50px;
+.notifBtn a, .userName{
+    display: grid;
+}
+
+#bellIcon{
     justify-self: start;
+    width: 35px;
 }
 
-.userIcon img{
-    width: 70px;
+#avatarsm{
     justify-self: center;
+    width: 45px;
+}
+
+#modeBtn{
+    justify-self: center;
+    width: 36px;
 }
 
 .userName p{
     justify-self: center;
-    font-size: 25px;
+    font-size: 20px;
     color: var(--titleColor);
 }
 
-.bellIcon a, .userIcon a, .userName{
-    display: grid;
-}
-
 .userInfo{
-    padding: 15px 45px;
-    font-size: 35px;
+    padding: 5px 35px 15px 35px;
     display: grid;
     grid-template-columns: 2fr 1fr;
 }
@@ -126,12 +132,16 @@ header{
     color: var(--titleColor);
 }
 
-.profilePic img{
-    width: 120px;
+#avatarxl{
+    width: 80px;
 }
 
 .profileName span{
-    font-weight: 600;
+    font-weight: 700;
+}
+
+.profileName{
+    font-size: 25px;
 }
 
 .profileBtns{
@@ -143,28 +153,28 @@ header{
 }
 
 .profileBtns button{
-    width: 150px;
-    border-radius: 5px;
+    width: 140px;
+    border-radius: 10px;
     border: none;
     font-family: "Unbounded", sans-serif;
     font-weight: 400;
     font-size: 25px;
-    padding: 10px;
+    padding: 5px;
 }
 
 .sideBar{
-    padding: 15px;
     grid-row: 1 / 3;
+    padding: 10px 15px 10px 10px;
     display: grid;
-    grid-template-rows: 600px 400px;
-    gap: 50px;
+    grid-auto-rows: max-content;
+    gap: 60px;
 }
 
 .logo{
     display: grid;
     grid-template-columns: 100px 1fr;
     gap: 10px;
-    font-size: 45px;
+    font-size: 35px;
     font-family: "Unbounded", sans-serif;
     font-weight: 700;
     justify-content: center;
@@ -172,7 +182,7 @@ header{
 }
 
 .navigation, .settings{
-    font-size: 35px;
+    font-size: 30px;
     font-family: "Unbounded", sans-serif;
 }
 
@@ -190,32 +200,212 @@ a:visited:hover{
 
 .navigation{
     display: grid;
-    grid-template-rows: 150px 400px;
-    gap: 25px;
+    grid-row: auto auto;
+    gap: 30px;
 }
 
 .navUi{
     display: grid;
-    grid-template-rows: repeat(autofit, minmax(25px, 50px));
-    padding-left: 10px;
+    grid-template-rows: repeat(autofit, auto);
     gap: 15px;
+    padding-left: 10px;
 }
 
 .home,.messages,.history,.profile,.tasks,.community,.settingsCog,.support,.privacy{
-    display: flex;
+    display: grid;
+    grid-template-columns: 45px auto;
     align-items: center;
-    gap: 15px;
+    gap: 5px;
+}
+
+#stickyNote{
+    width: 100px;
+}
+
+#house, #user, #clock,#gear,#question,#shield{
+    width: 30px;
+}
+
+#txt, #clipBoard{
+    width: 35px;
+}
+
+#group{
+    width: 45px;
+}
+
+.navImg{
+    display: grid;
+    justify-content: center;
 }
 
 .settings{
     display: grid;
-    grid-template-rows: repeat(3, minmax(25px, 50px));
+    grid-template-rows: repeat(autofit, auto);
     padding-left: 10px;
     gap: 15px;
 }
 
+.subBoard{
+    min-height: 100vh;
+    grid-column: 2 / 3;
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    grid-template-rows: 60px;
+    grid-auto-rows: auto;
+    background-color: var(--mainBg);
+    background-image: var(--patternBg);
+    padding: 15px 25px;
+    gap: 15px;
+    box-shadow: inset var(--modeShadow);
+}
 
-.main{
+.enlarge:hover{
+    transform: scale(1.2);
+    transition: ease-in-out 0.4s;
+}
+
+.enlargeC:hover{
+    transform: scale(1.03);
+    transition: ease-in-out 0.5s;
+}
+
+
+.titles{
+    grid-column: 1 / 3;
+    display: grid;
+    align-items: center;
+    padding-bottom: 15px;
+}
+
+.titles p{
+    font-family: "Unbounded", sans-serif;
+    font-size: 25px;
+    font-weight: 600;
+    margin: 0;
+    padding: 0;
+}
+
+.pinBoard{
+    grid-column: 1/2;
+}
+
+.squares{
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(350px,1fr));
+    gap: 20px;
+    padding: 10px;
+}
+
+.cardDesign{
+    background-color: var(--cardBg);
+    height: 200px;
+    display: grid;
+    grid-template-columns: 5px 1fr;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    box-shadow: var(--modeShadow);
+    cursor: pointer;
+}
+
+.cardStripe{
+    background-color: #FFB433;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.card{
+    display: grid;
+    grid-template-rows: 25px 1fr 40px;
+    gap: 10px;
+    font-family: "Inter Tight", sans-serif;
+    text-align: left;
+    padding: 10px;
+}
+
+.projName{
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.projContent{
+    display: grid;
+    align-items: start;
+}
+
+.card p{
+    margin: 0;
+    padding: 0;
+}
+
+.shareBtn{
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: max-content;
+    gap: 10px;
+    justify-content: end;
+    align-items: center;
+    padding: 10px;
+}
+
+#star,#eye,#share{
+    width: 25px;
+}
+
+.miscBoard{
+    display: grid;
+    grid-auto-rows:max-content;
+    gap: 15px;
+}
+
+.notice, .trend{
+    background-color: var(--cardBg);
+    display: grid;
+    grid-template-columns: auto auto;
+    border-radius: 10px;
+    padding: 5px;
+    box-shadow: var(--modeShadow);
+}
+
+.miscTitle{
+    padding: 10px;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--bgColor);
+    border-radius: 10px;
+    color: var(--letterColor);
+}
+
+.miscContent{
+    padding: 10px;
+}
+
+.miscTitle p{
+    font-family: "Unbounded", sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    writing-mode: sideways-lr;
+}
+
+.miscContent p{
+    font-family: "Inter Tight", sans-serif;
+    color: var(--letterColor);
+}
+
+.miscBoard p{
+    margin: 0;
+    padding: 0;
+}
+
+.miscContent ul{
+    list-style: none;
+    padding: 0;
+}
+
+/* .main{
     padding: 15px 35px;
     grid-column: 2 / 3;
     background-color: var(--mainBg);
@@ -226,18 +416,6 @@ a:visited:hover{
     grid-auto-rows: auto;
     gap: 10px;
     box-shadow: inset var(--modeShadow);
-}
-
-.titles{
-    padding-left: 25px;
-    grid-column: 1 / 3;
-    display: grid;
-    align-items: center;
-}
-
-.titles h1{
-    font-size: 35px;
-    font-family: "Unbounded", sans-serif;
 }
 
 .mainBoard{
@@ -318,4 +496,4 @@ a:visited:hover{
     box-shadow: var(--modeShadow);
     grid-template-columns: 85px auto;
     padding: 10px;
-}
+} */
