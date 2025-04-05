@@ -11,7 +11,9 @@
     --cardBg: white;
     --mainBg: #FFF5E4;
     --patternBg: url("https://www.transparenttextures.com/patterns/asfalt-dark.png");
-}
+    --logoTextNormal: black;
+    --logoTextHover: white;
+} 
 
 :root.dark{
     --bgColor:#3C3D37;
@@ -22,6 +24,9 @@
     --mainBg: #697565;
     --cardBg: black;
     --patternBg: url("https://www.transparenttextures.com/patterns/asfalt-light.png");
+    --logoTextNormal: #ECDFCC;
+    --logoTextHover: #ECDFCC;
+    
 }
 
 body{
@@ -93,6 +98,7 @@ header{
 
 .notifBtn a, .userName{
     display: grid;
+    transition: ease-in-out 0.4s;
 }
 
 #bellIcon{
@@ -108,6 +114,22 @@ header{
 #modeBtn{
     justify-self: center;
     width: 36px;
+    cursor: pointer;
+}
+
+#modeBtn:hover{
+    mask-image: linear-gradient(-75deg, rgba(255, 255, 255, 0.601) 40%, #ffff 50%, rgba(255, 255, 255, 0.601) 60%);
+    mask-size: 200%;
+    animation: shine 1s infinite;
+}
+
+@keyframes shine{
+    from {
+        mask-position: 150%;
+    }
+    to{
+        mask-position: -50%;
+    }
 }
 
 .userName p{
@@ -155,11 +177,25 @@ header{
 .profileBtns button{
     width: 140px;
     border-radius: 10px;
-    border: none;
+    border: solid 2px var(--bgColor);
     font-family: "Unbounded", sans-serif;
     font-weight: 400;
     font-size: 25px;
     padding: 5px;
+    cursor: pointer;
+}
+
+.profileBtns button:hover{
+    border: solid 2px var(--letterColorInverse);
+    color: var(--letterColorInverse);
+    transition: ease-in-out 0.2s;
+}
+
+.profileBtns button:active{
+    border: solid 2px var(--bgColor);
+    background-color: var(--letterColor);
+    color: var(--bgColor);
+    transition: none;
 }
 
 .sideBar{
@@ -167,19 +203,82 @@ header{
     padding: 10px 15px 10px 10px;
     display: grid;
     grid-auto-rows: max-content;
-    gap: 60px;
+    gap: 55px;
 }
 
 .logo{
-    display: grid;
-    grid-template-columns: 100px 1fr;
-    gap: 10px;
     font-size: 35px;
     font-family: "Unbounded", sans-serif;
     font-weight: 700;
     justify-content: center;
     align-items: center;
+    transition: ease-in-out 0.2s;
+    border-radius: 15px;
+    position: relative;
 }
+
+.brandName{
+    justify-content: start;
+    align-items: center;
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: max-content;
+    gap: 5px;
+    color: var(--logoTextNormal);
+    position: relative;
+}
+
+.mainLogo{
+    display: grid;
+    align-items: center;
+}
+
+#stickyNote{
+    fill:  var(--logoTextNormal);
+}
+
+.brandName:hover{
+    mask-image: linear-gradient(-75deg, rgba(255, 255, 255, 0.600) 40%, #ffffff 50%, rgba(255, 255, 255, 0.6) 60%);
+    mask-size: 200%;
+    animation: shine 2s infinite;
+    color: var(--logoTextHover);
+     
+    & .mainLogo #stickyNote {
+        fill: var(--logoTextHover);
+    }
+}
+
+@keyframes shine{
+    from {
+        mask-position: 150%;
+    }
+    to{
+        mask-position: -50%;
+    }
+}
+
+.logo::before{
+    position: absolute;
+    content: "";
+    height: 100%;
+    width: 95%;
+    left: 0px;
+    bottom:0;
+    background-color: black;
+    transform: scaleX(0);
+    transition: transform 0.4s ease-out;
+    border-radius: 10px;
+}
+
+.logo:hover::before{
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+.logo::before{
+    transform-origin: bottom right;
+}
+
 
 .navigation, .settings{
     font-size: 30px;
@@ -195,13 +294,14 @@ a:visited {
 }
 
 a:visited:hover{
-   color: var(--letterColorInverse)
+   color: var(--letterColorInverse);
+
 }
 
 .navigation{
     display: grid;
     grid-row: auto auto;
-    gap: 30px;
+    gap: 35px;
 }
 
 .navUi{
@@ -216,6 +316,7 @@ a:visited:hover{
     grid-template-columns: 45px auto;
     align-items: center;
     gap: 5px;
+    transition: ease-in-out 0.3s;
 }
 
 #stickyNote{
@@ -262,25 +363,26 @@ a:visited:hover{
 
 .enlarge:hover{
     transform: scale(1.2);
-    transition: ease-in-out 0.4s;
 }
 
 .enlargeC:hover{
     transform: scale(1.03);
-    transition: ease-in-out 0.5s;
 }
 
+.enlargeS:hover{
+    transform: scale(1.05);
+}
 
 .titles{
     grid-column: 1 / 3;
     display: grid;
     align-items: center;
-    padding-bottom: 15px;
+    padding-left: 18px;
 }
 
 .titles p{
     font-family: "Unbounded", sans-serif;
-    font-size: 25px;
+    font-size: 30px;
     font-weight: 600;
     margin: 0;
     padding: 0;
@@ -294,7 +396,7 @@ a:visited:hover{
     display: grid;
     grid-template-columns: repeat(auto-fit,minmax(350px,1fr));
     gap: 20px;
-    padding: 10px;
+    padding: 0 10px;
 }
 
 .cardDesign{
@@ -308,6 +410,8 @@ a:visited:hover{
     border-bottom-left-radius: 5px;
     box-shadow: var(--modeShadow);
     cursor: pointer;
+    transition: ease-in-out 0.3s;
+    color: var(--letterColor);
 }
 
 .cardStripe{
@@ -340,6 +444,10 @@ a:visited:hover{
     padding: 0;
 }
 
+.cardBtn{
+    transition: ease-in-out 0.4s;
+}
+
 .shareBtn{
     display: grid;
     grid-auto-flow: column;
@@ -352,12 +460,13 @@ a:visited:hover{
 
 #star,#eye,#share{
     width: 25px;
+    stroke: blue;
 }
 
 .miscBoard{
     display: grid;
     grid-auto-rows:max-content;
-    gap: 15px;
+    gap: 20px;
 }
 
 .notice, .trend{
@@ -380,7 +489,7 @@ a:visited:hover{
 }
 
 .miscContent{
-    padding: 10px;
+    padding: 5px 10px;
 }
 
 .miscTitle p{
@@ -403,97 +512,23 @@ a:visited:hover{
 .miscContent ul{
     list-style: none;
     padding: 0;
-}
-
-/* .main{
-    padding: 15px 35px;
-    grid-column: 2 / 3;
-    background-color: var(--mainBg);
-    background-image: var(--patternBg);
     display: grid;
-    grid-template-columns: 3fr 1fr;
-    grid-template-rows: 80px;
-    grid-auto-rows: auto;
-    gap: 10px;
-    box-shadow: inset var(--modeShadow);
+    gap: 15px;
 }
 
-.mainBoard{
+.listItem{
+    border-top: solid 1px var(--letterColor);
     display: grid;
-    gap: 10px;
-    padding: 15px;
+    transition: ease-in-out 0.4s;
+    cursor: pointer;
 }
 
-.pins{
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(350px,1fr));
-    gap: 30px;
-}
-
-.cardDesign{
-    height: 250px;
-    display: grid;
-    grid-template-columns: 2% 1fr;
-    border-radius: 15px;
-    box-shadow: var(--modeShadow);
-}
-
-.cardPattern{
-    border-top-left-radius: 15px;
-    border-bottom-left-radius: 15px;
-}
-
-.cards{
-    padding: 10px;
-    border-top-right-radius: 15px;
-    border-bottom-right-radius: 15px;
-}
-
-.cardContent{
-    font-family: "Inter Tight", sans-serif;
-    text-align: left;
-    display: flex;
-    flex-direction: column;
-}
-
-.projectTitle{
+.listTitle{
     font-weight: 600;
-    font-size: 25px;
-}
-
-.projectTitle p{
-    margin: 0;
-}
-
-.projectContent{
-    font-weight: 400;
     font-size: 18px;
+    padding-top: 5px;
 }
 
-.sideBoard{
-    display: grid;
-    grid-template-rows: auto auto;
-    gap: 30px;
-    padding: 15px;
+.listTop{
+    border: none;
 }
-
-.titless{
-    display: grid;
-    justify-content: center;
-    align-items: center;
-    writing-mode: sideways-lr;
-    letter-spacing: 0.3em;
-    text-align: center;
-    font-size: 25px;
-    border-radius: 15px;
-    padding: 3px;
-}
-
-.announcements,.trending{
-    font-family: "Unbounded", sans-serif;
-    display: grid;
-    border-radius: 15px;
-    box-shadow: var(--modeShadow);
-    grid-template-columns: 85px auto;
-    padding: 10px;
-} */
