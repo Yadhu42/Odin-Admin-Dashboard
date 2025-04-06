@@ -13,6 +13,8 @@
     --patternBg: url("https://www.transparenttextures.com/patterns/asfalt-dark.png");
     --logoTextNormal: black;
     --logoTextHover: white;
+    --buttonTextcolor: #FFB433;
+    --shareBtn: #FFB433;
 } 
 
 :root.dark{
@@ -26,7 +28,8 @@
     --patternBg: url("https://www.transparenttextures.com/patterns/asfalt-light.png");
     --logoTextNormal: #ECDFCC;
     --logoTextHover: #ECDFCC;
-    
+    --buttonTextcolor: #ECDFCC;
+    --shareBtn:#697565;
 }
 
 body{
@@ -104,6 +107,12 @@ header{
 #bellIcon{
     justify-self: start;
     width: 35px;
+    stroke: var(--titleColor);
+}
+
+#bellIcon:hover{
+    fill: var(--titleColor);
+    stroke:black;
 }
 
 #avatarsm{
@@ -111,15 +120,23 @@ header{
     width: 45px;
 }
 
+.notifBtnm{
+    display: grid;
+    justify-content: center;
+}
+
 #modeBtn{
-    justify-self: center;
     width: 36px;
     cursor: pointer;
+    fill: var(--titleColor);
+    stroke: var(--titleColor);
 }
 
 #modeBtn:hover{
     mask-image: linear-gradient(-75deg, rgba(255, 255, 255, 0.601) 40%, #ffff 50%, rgba(255, 255, 255, 0.601) 60%);
     mask-size: 200%;
+    fill: var(--titleColor);
+    stroke: var(--titleColor);
     animation: shine 1s infinite;
 }
 
@@ -186,15 +203,15 @@ header{
 }
 
 .profileBtns button:hover{
-    border: solid 2px var(--letterColorInverse);
+    border: solid 2px var(--logoTextHover);
     color: var(--letterColorInverse);
     transition: ease-in-out 0.2s;
 }
 
 .profileBtns button:active{
-    border: solid 2px var(--bgColor);
-    background-color: var(--letterColor);
-    color: var(--bgColor);
+    border: solid 2px var(--buttonTextcolor);
+    background-color: black;
+    color: var(--buttonTextcolor);
     transition: none;
 }
 
@@ -226,6 +243,7 @@ header{
     gap: 5px;
     color: var(--logoTextNormal);
     position: relative;
+    
 }
 
 .mainLogo{
@@ -270,7 +288,7 @@ header{
     border-radius: 10px;
 }
 
-.logo:hover::before{
+.logo::before{
     transform: scaleX(1);
     transform-origin: bottom left;
 }
@@ -291,11 +309,6 @@ a:link {
 
 a:visited {
     color: var(--letterColor);
-}
-
-a:visited:hover{
-   color: var(--letterColorInverse);
-
 }
 
 .navigation{
@@ -327,6 +340,98 @@ a:visited:hover{
     width: 30px;
 }
 
+.home,.history,.tasks{
+    & .navImg{
+        & svg{
+            fill: var(--letterColor);
+        }
+    }
+}
+
+.profile{
+    & .navImg{
+        & svg {
+            & #Dribbble-Light-Preview {
+                fill: var(--letterColor);
+            }
+        }
+    }
+}
+
+.messages,.settingsCog,.privacy{
+    & .navImg{
+        & svg{
+           stroke: var(--letterColor);
+        }
+    }
+}
+
+.community,.support{
+    & .navImg{
+        & svg{
+           & .strokePath{
+            stroke: var(--letterColor);   
+           }
+           & .fillPath{
+            fill: var(--letterColor);
+           }
+        }
+    }
+}
+
+.home:hover,.history:hover,.profile:hover,.tasks:hover{
+
+    & .navImg{
+        & svg{
+            fill: var(--letterColorInverse);
+        }
+    }
+
+    & a:visited{
+        color: var(--letterColorInverse);
+     }
+}
+
+.profile:hover{
+    & .navImg{
+        & svg {
+            & #Dribbble-Light-Preview {
+                fill:var(--letterColorInverse);
+            }
+        }
+    }
+    & a:visited{
+        color: var(--letterColorInverse);
+     }
+}
+
+.messages:hover,.settingsCog:hover,.privacy:hover{
+    & .navImg{
+        & svg{
+           stroke: var(--letterColorInverse);
+        }
+    }
+    & a:visited{
+        color: var(--letterColorInverse);
+     }
+}
+
+.community:hover,.support:hover{
+    & .navImg{
+        & svg{
+           & .strokePath{
+            stroke:var(--letterColorInverse);
+           }
+           & .fillPath{
+            fill: var(--letterColorInverse);
+           }
+        }
+    }
+    & a:visited{
+        color: var(--letterColorInverse);
+     }
+}
+
 #txt, #clipBoard{
     width: 35px;
 }
@@ -338,6 +443,7 @@ a:visited:hover{
 .navImg{
     display: grid;
     justify-content: center;
+    align-items: center;
 }
 
 .settings{
@@ -415,7 +521,7 @@ a:visited:hover{
 }
 
 .cardStripe{
-    background-color: #FFB433;
+    background-color: var(--bgColor);
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
 }
@@ -458,9 +564,22 @@ a:visited:hover{
     padding: 10px;
 }
 
-#star,#eye,#share{
+#star,#share{
     width: 25px;
-    stroke: blue;
+    stroke: var(--letterColor);
+}
+
+#star:hover,#share:hover{
+    stroke: var(--shareBtn);
+}
+
+#eye{
+    width: 25px;
+    fill: var(--letterColor);
+}
+
+#eye:hover{
+    fill: var(--shareBtn);
 }
 
 .miscBoard{
@@ -497,6 +616,7 @@ a:visited:hover{
     font-size: 20px;
     font-weight: 700;
     writing-mode: sideways-lr;
+    letter-spacing: 0.24em;
 }
 
 .miscContent p{
