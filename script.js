@@ -1,10 +1,10 @@
-var docWidth = document.documentElement.offsetWidth;
+const NightMode = document.querySelector(`#modeBtn`);
 
-[].forEach.call(
-  document.querySelectorAll('*'),
-  function(el) {
-    if (el.offsetWidth > docWidth) {
-      console.log(el);
-    }
-  }
-);
+function switchTheme(){
+  const root = document.documentElement;
+
+  const theme = root.className === `light` ? `dark` : `light`;
+  root.className = theme;
+}
+
+NightMode.addEventListener(`click`,switchTheme);
